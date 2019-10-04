@@ -1,6 +1,8 @@
 require_relative "./pieces.rb"
 
 class Board
+    attr_reader :null_piece
+
     def initialize
         @null_piece = NullPiece.instance
         @board_grid = Array.new(8) { Array.new(8, @null_piece) }
@@ -74,5 +76,11 @@ class Board
     def piece_symbol(position)
         piece = self[ position ]
         piece.symbol
+    end
+
+    def move_piece(current_pos, destination_pos)
+        piece = self[ current_pos ]
+        self[ current_pos ] = null_piece
+        self[ destination_pos ] = piece
     end
 end
