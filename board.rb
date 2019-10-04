@@ -8,6 +8,12 @@ class Board
 
     def place_chess_pieces_on_the_board_grid
         place_blace_and_white_rooks_in_starting_position
+        place_blace_and_white_knights_in_starting_position
+    end
+
+    def place_blace_and_white_knights_in_starting_position
+        knight_cols = [ 1, 6 ]
+        put_pieces(starting_rows, knight_cols, Knight)
     end
 
     def place_blace_and_white_rooks_in_starting_position
