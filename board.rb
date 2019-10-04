@@ -57,4 +57,9 @@ class Board
         row, col = position
         @board_grid[row][col] = piece
     end
+
+    def [](position)
+        row, col = position
+        @board_grid[row][col]
+    end
 end
