@@ -62,4 +62,9 @@ class Board
         row, col = position
         @board_grid[row][col]
     end
+
+    def piece_symbol(position)
+        piece = self[ position ]
+        piece.symbol
+    end
 end
