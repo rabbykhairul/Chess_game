@@ -13,6 +13,13 @@ class Board
         place_black_and_white_bishops_in_starting_position
         place_black_and_white_queens_in_starting_position
         place_black_and_white_kings_in_starting_position
+        place_black_and_white_pawns_in_starting_position
+    end
+
+    def place_black_and_white_pawns_in_starting_position
+        pawn_cols = (0..7).to_a
+        pawn_rows = { 1 => :black, 6 => :white }
+        put_pieces(pawn_rows, pawn_cols, Pawn)
     end
 
     def place_black_and_white_kings_in_starting_position
