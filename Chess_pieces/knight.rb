@@ -2,6 +2,6 @@ require_relative "./chess_piece.rb"
 
 class Knight < ChessPiece
     def symbol
-        '♞'.colorize(color)
+        ' ♞ '.colorize(color)
     end
 end

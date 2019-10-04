@@ -9,6 +9,6 @@ class NullPiece < ChessPiece
     end
 
     def symbol
-        " "
+        "   "
     end
 end
