@@ -11,6 +11,12 @@ class Board
         place_black_and_white_knights_in_starting_position
         place_black_and_white_bishops_in_starting_position
         place_black_and_white_queens_in_starting_position
+        place_black_and_white_kings_in_starting_position
+    end
+
+    def place_black_and_white_kings_in_starting_position
+        king_cols = [ 4 ]
+        put_pieces(starting_rows, king_cols, King)
     end
 
     def place_black_and_white_queens_in_starting_position
