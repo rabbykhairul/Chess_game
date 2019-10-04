@@ -2,7 +2,8 @@ require_relative "./pieces.rb"
 
 class Board
     def initialize
-        @board_grid = Array.new(8) { Array.new(8, nil) }
+        @null_piece = NullPiece.instance
+        @board_grid = Array.new(8) { Array.new(8, @null_piece) }
         place_chess_pieces_on_the_board_grid
     end
 
