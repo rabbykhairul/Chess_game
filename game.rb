@@ -2,7 +2,7 @@ require_relative './board.rb'
 require_relative './player.rb'
 
 class Game
-    attr_reader :white_player, :black_player
+    attr_reader :white_player, :black_player, :chess_board
     attr_accessor :current_player
 
     def initialize
@@ -26,5 +26,10 @@ class Game
         else
             self.current_player = self.white_player
         end
+    end
+
+    def make_move(move_command)
+        current_pos, destination_pos = move_command
+        chess_board.move_piece(current_pos, destination_pos)
     end
 end
