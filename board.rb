@@ -83,4 +83,14 @@ class Board
         self[ current_pos ] = null_piece
         self[ destination_pos ] = piece
     end
+    
+    def find_king(king_color)
+        (0...8).each do |row|
+            (0...8).each do |col|
+                position = [ row, col ]
+                piece = self[ position ]
+                return position if piece.is_a?(King) && piece.color == king_color
+            end
+        end
+    end
 end
