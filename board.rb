@@ -1,4 +1,5 @@
 require_relative "./pieces.rb"
+require_relative "./duplicate_board.rb"
 
 class Board
     attr_reader :null_piece
@@ -111,5 +112,9 @@ class Board
                 return position if piece.is_a?(King) && piece.color == king_color
             end
         end
+    end
+
+    def dup
+        Duplicate_board.new(self)
     end
 end
