@@ -82,6 +82,7 @@ class Board
         piece = self[ current_pos ]
         self[ current_pos ] = null_piece
         self[ destination_pos ] = piece
+        piece.position = destination_pos
     end
     
     def find_king(king_color)
