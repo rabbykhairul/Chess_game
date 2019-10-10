@@ -47,8 +47,4 @@ module Slideable
 
         move_positions
     end
-
-    def within_range?(row, col)
-        row.between?(0,7) && col.between?(0,7)
-    end
 end
