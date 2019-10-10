@@ -58,7 +58,7 @@ class Board
         rows_hash.each do |row, color|
             cols.each do |col|
                 position = [ row, col ]
-                self[ position ] = piece_type.new(color, position)
+                self[ position ] = piece_type.new(color, position, self)
             end
         end
     end
