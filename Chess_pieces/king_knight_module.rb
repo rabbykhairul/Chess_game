@@ -2,7 +2,7 @@ module King_knight
     def possible_moves
         moves = []
         
-        DIRECTIONS.each do |dir|
+        directions.each do |dir|
             current_row, current_col = dir[0] + position[0], dir[1] + position[1]
 
             if within_range?(current_row, current_col)

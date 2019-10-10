@@ -15,6 +15,10 @@ class Knight < ChessPiece
         [ 1, 2 ]
     ]
 
+    def directions
+        DIRECTIONS
+    end
+
     def symbol
         ' ♞ '.colorize(color)
     end

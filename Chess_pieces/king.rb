@@ -15,6 +15,10 @@ class King < ChessPiece
         [ 1, -1 ]
     ]
 
+    def directions
+        DIRECTIONS
+    end
+
     def symbol
         ' ♚ '.colorize(color)
     end
