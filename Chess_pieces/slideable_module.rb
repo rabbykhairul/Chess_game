@@ -1,12 +1,12 @@
 module Slideable
     HORIZONTAL_DIRECTIONS = [
-        [ 1, 0 ],
-        [ -1, 0 ]
+        [ 0, 1 ],
+        [ 0, -1 ]
     ]
 
     VERTICAL_DIRECTIONS = [
-        [ 0, 1 ],
-        [ 0, -1 ]
+        [ 1, 0 ],
+        [ -1, 0 ]
     ]
 
     DIAGONAL_DIRECTIONS = [
