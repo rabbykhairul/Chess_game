@@ -1,12 +1,11 @@
 require_relative "./chess_piece.rb"
 
 class Pawn < ChessPiece
-    attr_reader :start_position, :move_direction
-    
+    attr_reader :start_position
+
     def initialize(color, position, board)
         super
         @start_position = position
-        @move_direction = @color == :black ? [1,0] : [-1,0]
     end
 
     def symbol
@@ -15,5 +14,9 @@ class Pawn < ChessPiece
 
     def at_starting_position?
         position == start_position
+    end
+
+    def forward_direction
+        color == :black ? 1 : -1
     end
 end 
