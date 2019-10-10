@@ -13,4 +13,8 @@ class ChessPiece
     def within_range?(row, col)
         row.between?(0,7) && col.between?(0,7)
     end
+
+    def valid_move?(destination_position)
+        possible_moves.include?(destination_position)
+    end
 end

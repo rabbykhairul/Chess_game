@@ -80,9 +80,21 @@ class Board
 
     def move_piece(current_pos, destination_pos)
         piece = self[ current_pos ]
+        check_move_validity(piece, destination_pos)
+        
         self[ current_pos ] = null_piece
         self[ destination_pos ] = piece
         piece.position = destination_pos
+    end
+
+    def check_move_validity(piece, destination_pos)
+        # Prevent move from empty position
+        raise "You can't move from empty position" if piece.is_a?(NullPiece)
+        # Prevent capturing a king i.e. replacing a king in it's position
+        piece_to_be_replaced = self[ destination_pos ]
+        raise "You can't replace a king, you can only check a king" if piece_to_be_replaced.is_a?(King)
+        # Prevent illegal move
+        raise "Sorry, piece doesn't move like that" unless piece.valid_move?(destination_pos)
     end
     
     def find_king(king_color)
