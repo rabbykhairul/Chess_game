@@ -13,11 +13,7 @@ class Rook < ChessPiece
     end
 
     def moves_in_horizontal_and_vertical_direction
-        move_positions = []
-        horizontal_and_vertical_direction.each do |dir|
-            move_positions += grow_moves_in_direction(dir)
-        end
-        move_positions
+        find_moves(horizontal_and_vertical_direction)
     end
 
     def horizontal_and_vertical_direction
