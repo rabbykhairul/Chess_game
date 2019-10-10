@@ -9,10 +9,6 @@ class Queen < ChessPiece
     end
 
     def possible_moves
-        moves_in_horizontal_vertical_diagonal_direction
-    end
-
-    def moves_in_horizontal_vertical_diagonal_direction
         find_moves(horizontal_vertical_diagonal_direction)
     end
 
