@@ -1,3 +1,4 @@
+require_relative './duplicate_board.rb'
 require_relative './board.rb'
 
 class Display
@@ -45,11 +46,24 @@ end
 
 
 
-# Code for testing
-board = Board.new
-display = Display.new(board)
-# p display
-# puts "   ".colorize(:background => :light_blue)
-# puts display.build_line_for_row(1)
-# puts display.build_line_for_row(2)
-display.render_board
+# # Code for testing
+# board = Board.new
+# display = Display.new(board)
+# # p display
+# # puts "   ".colorize(:background => :light_blue)
+# # puts display.build_line_for_row(1)
+# # puts display.build_line_for_row(2)
+# puts "Original board: "
+# display.render_board
+
+# dup_board = board.dup
+# dup_display = Display.new(dup_board)
+# puts "Duplicate board: "
+# dup_display.render_board
+
+# dup_board.move_piece!([1,0], [5,0])
+# puts "Original board after move: "
+# display.render_board
+
+# puts "Duplicate board after move: "
+# dup_display.render_board
