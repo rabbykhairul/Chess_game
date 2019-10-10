@@ -9,6 +9,21 @@ module Slideable
         [ 0, -1 ]
     ]
 
+    DIAGONAL_DIRECTIONS = [
+        [ 1, -1 ],
+        [ 1, 1 ],
+        [ -1, -1 ],
+        [ -1, 1 ]
+    ]
+
+    def find_moves(directions)
+        moves = []
+        directions.each do |dir|
+            moves += grow_moves_in_direction(dir)
+        end
+        moves
+    end
+
     def grow_moves_in_direction(dir)
         move_positions = []
         current_row, current_col = position[0] + dir[0], position[1] + dir[1]
