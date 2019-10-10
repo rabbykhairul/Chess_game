@@ -78,10 +78,16 @@ class Board
         piece.symbol
     end
 
+    # Move a chess piece from one position to another only if the move is valid
     def move_piece(current_pos, destination_pos)
         piece = self[ current_pos ]
         check_move_validity(piece, destination_pos)
-        
+        move_piece!(current_pos, destination_pos)
+    end
+
+    # Move a chess piece from one position to another without checking the validity of the move
+    def move_piece!(current_pos, destination_pos)
+        piece = self[ current_pos ]
         self[ current_pos ] = null_piece
         self[ destination_pos ] = piece
         piece.position = destination_pos
