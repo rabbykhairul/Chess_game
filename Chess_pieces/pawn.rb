@@ -46,14 +46,34 @@ class Pawn < ChessPiece
 
     def side_attacks
         attacked_row = position[0] + forward_direction
-        side_attacked_positions = [
-            [ attacked_row, position[1] + 1 ],
-            [ attacked_row, position[1] - 1 ]
-        ]
+        # side_attacked_positions = [
+        #     [ attacked_row, position[1] + 1 ],
+        #     [ attacked_row, position[1] - 1 ]
+        # ]
 
-        side_attacked_positions.select do |attacked_position|
-            attacked_piece = board[ attacked_position ]
-            !attacked_piece.is_a?(NullPiece) && attacked_piece.color != self.color
-        end
+        # side_attacked_positions.select do |attacked_position|
+        #     attacked_row, attacked_col = attacked_position
+        #     if within_range?(attacked_row, attacked_col)
+        #         attacked_piece = board[ attacked_position ]
+        #         !attacked_piece.is_a?(NullPiece) && attacked_piece.color != self.color
+        #     end
+        # end
+        side_attacked_positions = []
+        # Checking the right side for attack validity
+        attacked_col = position[1] + 1
+        side_attacked_positions << [ attacked_row, attacked_col ] if enemy_piece?(attacked_row, attacked_col)
+        # Checking the left side for attack validity
+        attacked_col = position[1] - 1
+        side_attacked_positions << [ attacked_row, attacked_col ] if enemy_piece?(attacked_row, attacked_col)
+
+        side_attacked_positions
+    end
+
+    def enemy_piece?(attacked_row, attacked_col)
+        attacked_position = [ attacked_row, attacked_col ]
+        return false unless within_range?(attacked_row, attacked_col)
+        
+        attacked_piece = board[ attacked_position ]
+        !attacked_piece.is_a?(NullPiece) && attacked_piece.color != self.color
     end
 end
