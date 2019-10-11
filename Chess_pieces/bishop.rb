@@ -9,10 +9,10 @@ class Bishop < ChessPiece
     end
 
     def possible_moves
-        find_moves(diagonal_diretion)
+        find_moves(diagonal_direction)
     end
 
-    def diagonal_diretion
-        DIAGONAL_DIRCTIONS
+    def diagonal_direction
+        DIAGONAL_DIRECTIONS
     end
 end
