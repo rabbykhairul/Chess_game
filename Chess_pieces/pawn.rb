@@ -43,4 +43,17 @@ class Pawn < ChessPiece
         piece_at_position = board[ position ]
         piece_at_position.is_a?(NullPiece)
     end
+
+    def side_attacks
+        attacked_row = position[0] + forward_direction
+        side_attacked_positions = [
+            [ attacked_row, position[1] + 1 ],
+            [ attacked_row, position[1] - 1 ]
+        ]
+
+        side_attacked_positions.select do |attacked_position|
+            attacked_piece = board[ attacked_position ]
+            !attacked_piece.is_a?(NullPiece) && attacked_piece.color != self.color
+        end
+    end
 end
