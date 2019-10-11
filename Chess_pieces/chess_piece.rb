@@ -15,7 +15,10 @@ class ChessPiece
     end
 
     def valid_move?(destination_position)
-        possible_moves.include?(destination_position)
+        # A piece move is valid when the move desitination_position is included in that piece's 
+        # possible move positions and moving the piece to the destination_position will not 
+        # leave it's own king under check by an enemy piece.
+        possible_moves.include?(destination_position) && !moves_into_check?(destination_position)
     end
 
     def moves_into_check?(destination_position)
