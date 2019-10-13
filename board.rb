@@ -117,4 +117,10 @@ class Board
     def dup
         Duplicate_board.new(self)
     end
+
+    def checkmate?(king_color)
+        king_position = find_king(king_color)
+        king = self[ king_position ]
+        king.checkmate?
+    end
 end

@@ -32,4 +32,10 @@ class Game
         current_pos, destination_pos = move_command
         chess_board.move_piece(current_pos, destination_pos)
     end
+
+    def checkmate?
+        # Check whether the current player is already checkmated by the other player or not
+        king_color = current_player.color
+        chess_board.checkmate?(king_color)
+    end
 end
