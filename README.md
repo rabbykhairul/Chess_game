@@ -5,4 +5,6 @@ gem, visit https://github.com/fazibear/colorize
 To start the game, navigate to the game folder using the terminal and type this command:
 `$ruby play_game.rb`
 
+To exit the game before checkmate, use the command `Ctrl+C`
+
 Note: You should have Ruby programming language installed in your machine to try the game.
