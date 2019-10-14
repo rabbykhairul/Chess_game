@@ -8,7 +8,7 @@ require_relative "./board.rb"
 #   an exact copy of the current board state
 #   exact copy of each board pieces currently standing on the board
 
-class Duplicate_board < Board
+class DuplicatBoard < Board
     def initialize(original_board)
         @null_piece = NullPiece.instance
         @board_grid = Array.new(8) { Array.new(8, @null_piece) }

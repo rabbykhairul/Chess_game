@@ -122,7 +122,7 @@ class Board
     end
 
     def dup
-        Duplicate_board.new(self)
+        DuplicatBoard.new(self)
     end
 
     def checkmate?(king_color)
