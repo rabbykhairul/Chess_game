@@ -21,10 +21,13 @@ class Game
                 move_command = current_player.get_move
                 make_move(move_command)
             rescue => e
+                puts "-------"
                 puts e.message.colorize(:color => :white, :background => :red)
+                puts "-------"
                 sleep(3)
                 retry
             end
+            
             switch_player!
         end
     end
