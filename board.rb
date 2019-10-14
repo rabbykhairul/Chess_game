@@ -80,9 +80,9 @@ class Board
     end
 
     # Move a chess piece from one position to another only if the move is valid
-    def move_piece(current_pos, destination_pos)
+    def move_piece(player_color, current_pos, destination_pos)
         piece = self[ current_pos ]
-        check_move_validity(piece, destination_pos)
+        check_move_validity(player_color, piece, destination_pos)
         move_piece!(current_pos, destination_pos)
     end
 
@@ -94,7 +94,9 @@ class Board
         piece.position = destination_pos
     end
 
-    def check_move_validity(piece, destination_pos)
+    def check_move_validity(player_color, piece, destination_pos)
+        # Prevent player from trying to move the enemy pieces
+        raise " You are trying to move your opponent's chess piece -:( " unless player_color == piece.color
         # Prevent move from empty position
         raise " You can't move from empty position. Select a piece to move. " if piece.is_a?(NullPiece)
         # Prevent capturing a king i.e. replacing a king in it's position

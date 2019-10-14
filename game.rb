@@ -51,7 +51,8 @@ class Game
 
     def make_move(move_command)
         current_pos, destination_pos = translate_the_move_command(move_command)
-        chess_board.move_piece(current_pos, destination_pos)
+        player_color = current_player.color
+        chess_board.move_piece(player_color, current_pos, destination_pos)
     end
 
     def translate_the_move_command(move_command)
