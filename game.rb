@@ -1,5 +1,7 @@
+require_relative './duplicate_board.rb'
 require_relative './board.rb'
 require_relative './player.rb'
+require_relative './display.rb'
 
 class Game
     attr_reader :white_player, :black_player, :chess_board
@@ -7,8 +9,9 @@ class Game
 
     def initialize
         @chess_board = Board.new
-        @white_player = Player.new(:white)
-        @black_player = Player.new(:black)
+        @display = Display.new(@chess_board)
+        @white_player = Player.new(:white, @display)
+        @black_player = Player.new(:black, @display)
         @current_player = @white_player
     end
 
@@ -29,8 +32,41 @@ class Game
     end
 
     def make_move(move_command)
-        current_pos, destination_pos = move_command
+        current_pos, destination_pos = translate_the_move_command(move_command)
         chess_board.move_piece(current_pos, destination_pos)
+    end
+
+    def translate_the_move_command(move_command)
+        current_pos = translate_to_board_position(move_command[:start_pos])
+        destination_pos = translate_to_board_position(move_command[:destination_pos])
+        [ current_pos, destination_pos ]
+    end
+
+    def translate_to_board_position(position_string)
+        col_map = {
+            'a' => 0,
+            'b' => 1,
+            'c' => 2,
+            'd' => 3,
+            'e' => 4,
+            'f' => 5,
+            'g' => 6,
+            'h' => 7
+        }
+
+        row = position_string[1].to_i - 1
+
+        col_char = position_string[0]
+        col = col_map[col_char]
+        
+        position = [ row, col ]
+        raise "Position error!" unless valid_pos?(position)
+        position
+    end
+
+    def valid_pos?(position)
+        row, col = position
+        row.is_a?(Integer) && col.is_a?(Integer) && row.between?(0,7) && col.between?(0,7)
     end
 
     def checkmate?
@@ -39,3 +75,6 @@ class Game
         chess_board.checkmate?(king_color)
     end
 end
+
+game = Game.new
+game.start_game
