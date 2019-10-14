@@ -1,6 +1,9 @@
 require_relative "./chess_piece.rb"
+require_relative "./translate_pos_module.rb"
 
 class Pawn < ChessPiece
+    include Translate_position
+
     attr_reader :start_position
 
     def initialize(color, position, board)
@@ -50,13 +53,30 @@ class Pawn < ChessPiece
             puts
             puts " The moved pawn can attack enemy piece(s). ".colorize(:color => :red, :background => :white)
             sleep(2)
-            
+
             if available_attacks.length == 1
                 perform_the_default_attack(available_attacks)
             else
                 let_the_player_choose_the_attack(available_attacks)
             end
         end
+    end
+
+    def let_the_player_choose_the_attack(available_attacks)
+        puts
+        puts " Please choose a side attack (example: a5 or b7) ".colorize(:color => :red, :background => :white)
+        position_string = gets.chomp
+        enemy_piece_position = translate_to_board_position(position_string)
+        if available_attacks.include?(enemy_piece_position)
+            capture_enemy_piece_at_pos(enemy_piece_position)
+        else
+            raise " Please choose currect side attack "
+        end
+    end
+
+    def capture_enemy_piece_at_pos(enemy_piece_position)
+        attacked_piece = board[ enemy_piece_position ]
+        board[ enemy_piece_position ] = board.null_piece unless attacked_piece.is_a?(King)
     end
 
     def perform_the_default_attack(available_attacks)
