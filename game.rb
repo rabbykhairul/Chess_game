@@ -17,8 +17,14 @@ class Game
 
     def start_game
         until checkmate?
-            move_command = current_player.get_move
-            make_move(move_command)
+            begin
+                move_command = current_player.get_move
+                make_move(move_command)
+            rescue => e
+                puts e.message.colorize(:color => :white, :background => :red)
+                sleep(3)
+                retry
+            end
             switch_player!
         end
     end
@@ -58,9 +64,9 @@ class Game
 
         col_char = position_string[0]
         col = col_map[col_char]
-        
+
         position = [ row, col ]
-        raise "Position error!" unless valid_pos?(position)
+        raise "Position error!!! Please enter valid position(s)." unless valid_pos?(position)
         position
     end
 
