@@ -1,0 +1,5 @@
+require_relative './duplicate_board.rb'
+require_relative './board.rb'
+require_relative './player.rb'
+require_relative './display.rb'
+require_relative './Chess_pieces/translate_pos_module.rb'
