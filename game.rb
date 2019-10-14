@@ -4,7 +4,7 @@ require_relative './player.rb'
 require_relative './display.rb'
 
 class Game
-    attr_reader :white_player, :black_player, :chess_board
+    attr_reader :white_player, :black_player, :chess_board, :display
     attr_accessor :current_player
 
     def initialize
@@ -31,7 +31,15 @@ class Game
             switch_player!
         end
 
-        puts " #{current_player.color} is checkmated!!! ".colorize(:color => :green, :background => :white)
+        # puts " #{current_player.color} is checkmated!!! ".colorize(:color => :green, :background => :white)
+        display_game_result
+    end
+    
+    def display_game_result
+        result = " #{current_player.color} is checkmated!!! ".colorize(:color => :red, :background => :white)
+        system("clear")
+        display.render_board
+        puts "\n   #{result}\n\n"
     end
 
     def switch_player!
