@@ -27,9 +27,11 @@ class Game
                 sleep(3)
                 retry
             end
-            
+
             switch_player!
         end
+
+        puts " #{current_player.color} is checkmated!!! ".colorize(:color => :green, :background => :white)
     end
 
     def switch_player!
