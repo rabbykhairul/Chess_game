@@ -85,8 +85,7 @@ class Pawn < ChessPiece
         sleep(3)
 
         enemy_piece_position = available_attacks.first
-        attacked_piece = board[ enemy_piece_position ]
-        board[ enemy_piece_position ] = board.null_piece unless attacked_piece.is_a?(King)
+        capture_enemy_piece_at_pos(enemy_piece_position)
     end
 
     def side_attacks
