@@ -53,17 +53,6 @@ class ChessPiece
 
     def get_standing_enemy_pieces(duplicate_board)
         enemy_color = self.color == :white ? :black : :white
-        # enemy_pieces = []
-
-        # (0...8).each do |row|
-        #     (0...8).each do |col|
-        #         position = [ row, col ]
-        #         piece = duplicate_board[ position ]
-        #         enemy_pieces << piece if piece.color == enemy_color
-        #     end
-        # end
-
-        # enemy_pieces
         get_pieces_of_color(enemy_color, duplicate_board)
     end
 

@@ -31,7 +31,6 @@ class Game
             switch_player!
         end
 
-        # puts " #{current_player.color} is checkmated!!! ".colorize(:color => :green, :background => :white)
         display_game_result
     end
     
@@ -94,6 +93,3 @@ class Game
         chess_board.checkmate?(king_color)
     end
 end
-
-game = Game.new
-game.start_game
