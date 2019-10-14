@@ -13,8 +13,8 @@ class Player
 
     def display_the_board
         system("clear")
-        puts "\t#{color}'s turn: "
-        puts "\t------"
+        puts " #{color.to_s.capitalize}'s turn! ".colorize(:color => :red, :background => :white)
+        puts
         display.render_board
     end
 

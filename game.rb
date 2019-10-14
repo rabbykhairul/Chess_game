@@ -78,7 +78,7 @@ class Game
         col = col_map[col_char]
 
         position = [ row, col ]
-        raise "Position error!!! Please enter valid position(s)." unless valid_pos?(position)
+        raise " Position error!!! Please enter valid position(s). " unless valid_pos?(position)
         position
     end
 
