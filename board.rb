@@ -84,6 +84,11 @@ class Board
         piece = self[ current_pos ]
         check_move_validity(player_color, piece, destination_pos)
         move_piece!(current_pos, destination_pos)
+        if piece.is_a?(Pawn)
+            return "PawnMove"
+        else
+            return "NormalMove"
+        end
     end
 
     # Move a chess piece from one position to another without checking the validity of the move

@@ -52,7 +52,16 @@ class Game
     def make_move(move_command)
         current_pos, destination_pos = translate_the_move_command(move_command)
         player_color = current_player.color
-        chess_board.move_piece(player_color, current_pos, destination_pos)
+        move_type = chess_board.move_piece(player_color, current_pos, destination_pos)
+        if move_type == "PawnMove"
+            try_side_attack(destination_pos)
+        end
+    end
+
+    def try_side_attack(destination_pos)
+        pawn = chess_board[destination_pos]
+        current_player.display_the_board
+        pawn.try_side_attack
     end
 
     def translate_the_move_command(move_command)
