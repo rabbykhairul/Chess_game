@@ -44,6 +44,31 @@ class Pawn < ChessPiece
         piece_at_position.is_a?(NullPiece)
     end
 
+    def try_side_attack
+        available_attacks = side_attacks
+        unless available_attacks.empty?
+            puts
+            puts " The moved pawn can attack enemy piece(s). ".colorize(:color => :red, :background => :white)
+            sleep(2)
+            
+            if available_attacks.length == 1
+                perform_the_default_attack(available_attacks)
+            else
+                let_the_player_choose_the_attack(available_attacks)
+            end
+        end
+    end
+
+    def perform_the_default_attack(available_attacks)
+        puts
+        puts " Performing the default attack on your behalf! -:) ".colorize(:color => :red, :background => :white)
+        sleep(3)
+
+        enemy_piece_position = available_attacks.first
+        attacked_piece = board[ enemy_piece_position ]
+        board[ enemy_piece_position ] = board.null_piece unless attacked_piece.is_a?(King)
+    end
+
     def side_attacks
         attacked_row = position[0] + forward_direction
         side_attacked_positions = []
